@@ -16,6 +16,7 @@ import {
   removeFromCart,
 } from "../redux-toolkit/slices/product.slice";
 import { useMemo } from "react";
+import Link from "next/link";
 
 interface IProductCardProps {
   title: string;
@@ -110,6 +111,10 @@ const ProductCard = ({
             </Button>
           </Tooltip>
         )}
+
+        <Link href={`/product/${id}`}>
+          View product details
+        </Link>
       </CardActions>
     </Card>
   );

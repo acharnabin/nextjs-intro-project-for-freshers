@@ -19,3 +19,9 @@ export const fetchproductList=async ({
     });
     return res.data
 }
+
+export const fetchProductDetails=async(id:number)=>{
+    const res=await AxiosInstance.get(endpoints.product.details(id));
+
+    return res.data
+}

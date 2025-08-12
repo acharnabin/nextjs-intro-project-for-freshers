@@ -1,8 +1,10 @@
 import axios from "axios";
 import { baseURL } from "../endpoints/endpoints";
+import { parseCookies } from "nookies";
 
 const AxiosInstance = axios.create({
   baseURL: baseURL,
+  // timeout:10
 });
 
 // request
@@ -11,8 +13,8 @@ const AxiosInstance = axios.create({
 //
 AxiosInstance.interceptors.request.use(
   (config) => {
-
-    const token = localStorage.getItem("token");
+    const cookies = parseCookies();
+    const token = cookies["token"];
 
     if (token) {
       config.headers["Authorization"] = token;
@@ -21,7 +23,6 @@ AxiosInstance.interceptors.request.use(
     return config;
   },
   (error) => {
-    
     return Promise.reject(error);
   }
 );
@@ -29,11 +30,10 @@ AxiosInstance.interceptors.request.use(
 // reponse
 AxiosInstance.interceptors.response.use(
   (response) => {
-    
     return {
       ...response,
-      test:"Nabin"
-    }
+      test: "Nabin",
+    };
   },
   (error) => {
     console.log(error);

@@ -2,7 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
 type Data = {
-  name: string;
+  name: string;         
 };
 
 export default function handler(
@@ -11,3 +11,6 @@ export default function handler(
 ) {
   res.status(200).json({ name: "John Doe" });
 }
+
+// /api/hello
+// axios.get('/api/hello')

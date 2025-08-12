@@ -57,6 +57,8 @@ function HomeWithUseQuery() {
     // enabled:count>3
   });
 
+  console.log(data,"DATA")
+
   
 
   return (

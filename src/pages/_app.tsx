@@ -21,7 +21,7 @@ export default function CustomApp({ Component, pageProps, ...rest }: AppProps) {
   return (
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
-        <PersistGate persistor={_persistStore}>
+        {/* <PersistGate persistor={_persistStore}> */}
           <MuiThemeProvider>
             <Toaster position="top-center" reverseOrder={false} />
             <HomeLayout>
@@ -30,7 +30,7 @@ export default function CustomApp({ Component, pageProps, ...rest }: AppProps) {
 
             <ReactQueryDevtools initialIsOpen={false} />
           </MuiThemeProvider>
-        </PersistGate>
+        {/* </PersistGate> */}
       </QueryClientProvider>
     </Provider>
   );

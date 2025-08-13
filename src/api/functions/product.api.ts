@@ -14,10 +14,10 @@ export const fetchproductList = async ({
   offset: number;
   limit: number;
 }) => {
-  const res = await axios.post<TProductSchema["IProductResponse"]>(
-    "/api/product",
+  const res = await AxiosInstance.get<TProductSchema["IProductResponse"]>(
+    endpoints.product.list,
     {
-      data: {
+      params: {
         title,
         categoryId,
         offset,

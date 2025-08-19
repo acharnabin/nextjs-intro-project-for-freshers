@@ -1,3 +1,5 @@
+// /products-ssg
+
 import { getCategoryList } from "@/api/functions/category.api";
 import { fetchproductList } from "@/api/functions/product.api";
 import CreateCategory from "@/components/CreateCategory";
@@ -94,53 +96,7 @@ function Home({ productList }: IHomeProps) {
         </Button>
       </Box>
 
-      <CreateCategory />
-
-      <Button color="error" variant="contained" onClick={() => refetch()}>
-        Cholo refetch kori
-      </Button>
-
-      <Button onClick={() => setCount((prev) => prev - 1)} variant="contained">
-        Decrement - {count}
-      </Button>
-      <Button onClick={() => setCount((prev) => prev + 1)} variant="contained">
-        Increment - {count}
-      </Button>
-
       <Grid container spacing={2}>
-        <Grid size={5}>
-          <TextField
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            placeholder="Searh products"
-          />
-          <List
-            sx={{
-              width: "100%",
-              maxWidth: 360,
-              bgcolor: "background.paper",
-            }}
-          >
-            {categoryData?.map((value) => {
-              return (
-                <ListItem
-                  key={value?.id}
-                  disablePadding
-                  onClick={() => setcategoryId(value.id)}
-                  sx={{
-                    background:
-                      categoryId === value?.id ? "red" : "transparent",
-                  }}
-                >
-                  <ListItemButton role={undefined} dense>
-                    <ListItemText primary={value?.name} />
-                  </ListItemButton>
-                </ListItem>
-              );
-            })}
-          </List>
-        </Grid>
-
         <Grid size={7} padding={1}>
           <h1>current page - {offset}</h1>
           <Grid size={12}>
@@ -162,14 +118,9 @@ function Home({ productList }: IHomeProps) {
             <Grid container spacing={3}>
               {data?.map((item) => (
                 <Grid size={4} key={item?.id}>
-                  <ProductCard
-                    title={item.title}
-                    image={item.images[0]}
-                    id={item.id}
-                    category={item?.category?.name}
-                    price={item.price}
-                    description={item.description}
-                  />
+                  <Link href={`/products-ssg/${item?.id}`}>
+                    <h1>{item?.title}</h1>
+                  </Link>
                 </Grid>
               ))}
             </Grid>

@@ -22,8 +22,8 @@ import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-// SSR
-export const getServerSideProps = async () => {
+// SSG
+export const getStaticProps = async () => {
   const response = await fetchproductList({
     title: "",
     limit: 20,
@@ -43,7 +43,7 @@ interface IHomeProps {
   productList: TProductSchema["IProductResponse"];
 }
 
-function Home({ productList }: IHomeProps) {
+function HomeSSG({ productList }: IHomeProps) {
   // use query hook use korbo
 
   const [count, setCount] = useState(0);
@@ -180,4 +180,4 @@ function Home({ productList }: IHomeProps) {
   );
 }
 
-export default Home;
+export default HomeSSG;
